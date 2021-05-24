@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"> 
+    <link href="css/user.css" rel="stylesheet" type="text/css">
+    <title>User</title>
+    <style>
+        body {
+            height: 100vh;
+            background: #ddd !important;
+        }
+
+        .h1 {
+            color: #260383;
+        }
+
+        .navbar {
+            background: #260383;
+        }
+        
+        .nav-link {
+            color: #fff !important;
+        }
+
+        .nav-link:hover {
+            box-shadow: 0 0 0 0.5px #fff inset;
+            transition: all 50ms ease-in-out;
+        }
+
+        .sign-out:hover {
+            background: #F92658;
+            box-shadow: none;
+            color: #fff;
+        }
+
+        .active {
+            background: #fff !important;
+            color: #260383 !important;
+            font-weight: bold;
+        }
+
+        .btn {
+            background: #260383;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .content-title {
+            background: #260383;
+            color: #fff;
+        }
+
+        .rad {
+            background: none !important;
+            color: #260383;
+            border: 1px solid #260383;
+        }
+
+        .rad:hover {
+            border: 1px solid;
+            background: #260383 !important;
+            color: #fff;
+        }
+
+        .card-img-top {
+            height: 250px !important;
+        }
+
+        .selected {
+            border: 1px solid;
+            background: #260383 !important;
+            color: #fff;
+        }
+
+        .overlay {
+            position: absolute;
+            background-color: #ccc;
+            height: 100%;
+            width: 100%;
+            top: 0;
+            bottom: 0;
+            opacity: 0.75;
+            z-index: 100000;
+            display: flex;
+            justify-content: center;
+        }
+
+        .content-box {
+            -ms-overflow-style: none;  /* Internet Explorer 10+ */
+            scrollbar-width: none;  /* Firefox */
+        }
+        .content-box::-webkit-scrollbar { 
+            display: none;  /* Safari and Chrome */
+        }
+    </style>
+</head>
+<body>
+    <div class="d-flex flex-column h-100 flex-md-row justify-content-between">
+        <nav class="navbar navbar-expand-md navbar-dark flex-sm-row flex-md-column px-3 py-0 p-md-0 col-md-3 sticky-top">
+            <a href="#" class="text-center h1 text-decoration-none d-none d-md-block text-white mt-3 mb-4 align-self-stretch"><b>Logo</b></a>
+            <h4 class="text-center text-white d-sm-block d-md-none py-3"><b>Vote</b></h4>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navItems" aria-controls="navItems" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse align-items-start mt-md-3 col-md-8" id="navItems">
+                <ul class="nav nav-pills text-center d-flex flex-column w-100">
+                    <li class="nav-item pb-3 text-white"><a href="#" class="nav-link active">Vote</a></li>
+                    <li class="nav-item pb-3"><a href="results.html" class="nav-link">Results</a></li>
+                    <li class="nav-item pb-3"><a href="home.html" class="nav-link sign-out">Sign Out</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="container flex-grow-1 overflow-auto mh-100 content-box">    
+            <div class="row">
+                <div class="content-title col-md-12 py-3 mb-md-3 sticky-top d-none d-md-block">
+                    <h4 class="text-center"><b>Vote</b></h4>
+                </div>
+            </div>
+            <!-- <div class="row h-75 p-6"> -->
+                <!-- <div class="col-md-12 d-flex justify-content-center h-100">
+                    <button class="btn btn-lg align-self-center">Start Voting</button>
+                </div> -->
+                <!-- <div class="col-md-12 d-flex justify-content-center h-100">
+                    <div class="spinner-border align-self-center" role="status"></div>
+                </div> -->
+                <!-- <div class="col-md-12 d-flex justify-content-center h-100">
+                    <h4 class="align-self-center text-secondary">There are no ongoing elections.</h4>
+                </div> -->
+            <!-- </div> -->
+            <div class="content">
+                <div class="row p-6 my-3">
+                    <div class="col-3"><button class="btn h-100 w-100 m active">Mayor</button></div>
+                    <div class="col-3"><button class="btn h-100 w-100 disabled vm">Vice Mayor</button></div>
+                    <div class="col-3"><button class="btn h-100 w-100 disabled spc">Councilor</button></div>
+                    <div class="col-3"><button class="btn h-100 w-100 disabled sub">Submit</button></div>
+                </div>
+                <div class="row p-6 mb-3 m-candidates process">
+                    <div class="col-12 col-md-6 my-3">
+                        <div class="card">
+                            <img src="images/dp.png" alt="" class="card-img-top">
+                            <div class="card-body">
+                                <h4 class="card-title">Candidate 1</h4>
+                                <p class="card-text">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, voluptatem! Vero repellendus eum culpa esse.
+                                </p>
+                                <div class="row">
+                                    <div class="col-12 col-md-6">
+                                        <button class="btn btn-outline-light rad w-100 mb-2 mb-md-0" type="button" data-bs-toggle="collapse" data-bs-target="#platforms1">
+                                            Platforms
+                                        </button>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <button class="btn btn-outline-light rad w-100 mayor-btn"value="M1">Select</button>
+                                    </div>
+                                    <div class="collapse mt-3" id="platforms1">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Platform 1</h5>
+                                                <p class="card-text">
+                                                    Description
+                                                </p>
+                                                <h5 class="card-title">Platform 1</h5>
+                                                <p class="card-text">
+                                                    Description
+                                                </p>
+                                                <h5 class="card-title">Platform 1</h5>
+                                                <p class="card-text">
+                                                    Description
+                                                </p>
+                                                <h5 class="card-title">Platform 1</h5>
+                                                <p class="card-text">
+                                                    Description
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 my-3">
+                        <div class="card">
+                            <img src="images/dp.png" alt="" class="card-img-top">
+                            <div class="card-body">
+                                <h4 class="card-title">Candidate 2</h4>
+                                <p class="card-text">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, voluptatem! Vero repellendus eum culpa esse.
+                                </p>
+                                <div class="row">
+                                    <div class="col-12 col-md-6">
+                                        <button class="btn btn-outline-light rad w-100 mb-2 mb-md-0" type="button" data-bs-toggle="collapse" data-bs-target="#platforms2">
+                                            Platforms
+                                        </button>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <button class="btn btn-outline-light rad w-100 mayor-btn" value="M2">Select</button>
+                                    </div>
+                                    <div class="collapse mt-3" id="platforms2">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Platform 1</h5>
+                                                <p class="card-text">
+                                                    Description
+                                                </p>
+                                                <h5 class="card-title">Platform 1</h5>
+                                                <p class="card-text">
+                                                    Description
+                                                </p>
+                                                <h5 class="card-title">Platform 1</h5>
+                                                <p class="card-text">
+                                                    Description
+                                                </p>
+                                                <h5 class="card-title">Platform 1</h5>
+                                                <p class="card-text">
+                                                    Description
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                <!-- VICE MAYOR CANDIDATES -->
+                <div class="row p-6 mb-3 vm-candidates process">
+                    <div class="col-12 col-md-6 my-3">
+                        <div class="card">
+                            <img src="images/dp.png" alt="" class="card-img-top">
+                            <div class="card-body">
+                                <h4 class="card-title">Candidate 1</h4>
+                                <p class="card-text">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, voluptatem! Vero repellendus eum culpa esse.
+                                </p>
+                                <div class="row">
+                                    <div class="col-12 col-md-6">
+                                        <button class="btn btn-outline-light rad w-100 mb-2 mb-md-0" type="button" data-bs-toggle="collapse" data-bs-target="#platforms1">
+                                            Platforms
+                                        </button>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <button class="btn btn-outline-light rad w-100 vm-btn"value="VM1">Select</button>
+                                    </div>
+                                    <div class="collapse mt-3" id="platforms1">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Platform 1</h5>
+                                                <p class="card-text">
+                                                    Description
+                                                </p>
+                                                <h5 class="card-title">Platform 1</h5>
+                                                <p class="card-text">
+                                                    Description
+                                                </p>
+                                                <h5 class="card-title">Platform 1</h5>
+                                                <p class="card-text">
+                                                    Description
+                                                </p>
+                                                <h5 class="card-title">Platform 1</h5>
+                                                <p class="card-text">
+                                                    Description
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 my-3">
+                        <div class="card">
+                            <img src="images/dp.png" alt="" class="card-img-top">
+                            <div class="card-body">
+                                <h4 class="card-title">Candidate 2</h4>
+                                <p class="card-text">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, voluptatem! Vero repellendus eum culpa esse.
+                                </p>
+                                <div class="row">
+                                    <div class="col-12 col-md-6">
+                                        <button class="btn btn-outline-light rad w-100 mb-2 mb-md-0" type="button" data-bs-toggle="collapse" data-bs-target="#platforms2">
+                                            Platforms
+                                        </button>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <button class="btn btn-outline-light rad w-100 vm-btn" value="VM2">Select</button>
+                                    </div>
+                                    <div class="collapse mt-3" id="platforms2">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Platform 1</h5>
+                                                <p class="card-text">
+                                                    Description
+                                                </p>
+                                                <h5 class="card-title">Platform 1</h5>
+                                                <p class="card-text">
+                                                    Description
+                                                </p>
+                                                <h5 class="card-title">Platform 1</h5>
+                                                <p class="card-text">
+                                                    Description
+                                                </p>
+                                                <h5 class="card-title">Platform 1</h5>
+                                                <p class="card-text">
+                                                    Description
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                <!-- SP Candidates -->
+                <div class="row p-6 mb-3 sp-candidates process">
+                    <div class="col-6 col-md-3 my-3">
+                        <div class="card">
+                            <img src="images/dp.png" alt="" class="card-img-top">
+                            <div class="card-body">
+                                <h4 class="card-title">Candidate 2</h4>
+                                <p class="card-text">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, voluptatem! Vero repellendus eum culpa esse.
+                                </p>
+                                <div class="row">
+                                    <div class="col-12 mb-2">
+                                        <button class="btn btn-outline-light rad w-100 sp-btn" value="SP1">Select</button>
+                                    </div>
+                                    <div class="col-12">
+                                        <button class="btn btn-outline-light rad w-100 mb-2 mb-md-0" type="button" data-bs-toggle="collapse" data-bs-target="#platforms1">
+                                            Platforms
+                                        </button>
+                                    </div>
+                                    <div class="collapse mt-3" id="platforms1">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Platform 1</h5>
+                                                <p class="card-text">
+                                                    Description
+                                                </p>
+                                                <h5 class="card-title">Platform 1</h5>
+                                                <p class="card-text">
+                                                    Description
+                                                </p>
+                                                <h5 class="card-title">Platform 1</h5>
+                                                <p class="card-text">
+                                                    Description
+                                                </p>
+                                                <h5 class="card-title">Platform 1</h5>
+                                                <p class="card-text">
+                                                    Description
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3 my-3">
+                        <div class="card">
+                            <img src="images/dp.png" alt="" class="card-img-top">
+                            <div class="card-body">
+                                <h4 class="card-title">Candidate 2</h4>
+                                <p class="card-text">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, voluptatem! Vero repellendus eum culpa esse.
+                                </p>
+                                <div class="row">
+                                    <div class="col-12 mb-2">
+                                        <button class="btn btn-outline-light rad w-100 sp-btn" value="SP2">Select</button>
+                                    </div>
+                                    <div class="col-12">
+                                        <button class="btn btn-outline-light rad w-100 mb-2 mb-md-0" type="button" data-bs-toggle="collapse" data-bs-target="#platforms2">
+                                            Platforms
+                                        </button>
+                                    </div>
+                                    <div class="collapse mt-3" id="platforms2">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Platform 1</h5>
+                                                <p class="card-text">
+                                                    Description
+                                                </p>
+                                                <h5 class="card-title">Platform 1</h5>
+                                                <p class="card-text">
+                                                    Description
+                                                </p>
+                                                <h5 class="card-title">Platform 1</h5>
+                                                <p class="card-text">
+                                                    Description
+                                                </p>
+                                                <h5 class="card-title">Platform 1</h5>
+                                                <p class="card-text">
+                                                    Description
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3 my-3">
+                        <div class="card">
+                            <img src="images/dp.png" alt="" class="card-img-top">
+                            <div class="card-body">
+                                <h4 class="card-title">Candidate 2</h4>
+                                <p class="card-text">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, voluptatem! Vero repellendus eum culpa esse.
+                                </p>
+                                <div class="row">
+                                    <div class="col-12 mb-2">
+                                        <button class="btn btn-outline-light rad w-100 sp-btn" value="SP3">Select</button>
+                                    </div>
+                                    <div class="col-12">
+                                        <button class="btn btn-outline-light rad w-100 mb-2 mb-md-0" type="button" data-bs-toggle="collapse" data-bs-target="#platforms3">
+                                            Platforms
+                                        </button>
+                                    </div>
+                                    <div class="collapse mt-3" id="platforms3">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Platform 1</h5>
+                                                <p class="card-text">
+                                                    Description
+                                                </p>
+                                                <h5 class="card-title">Platform 1</h5>
+                                                <p class="card-text">
+                                                    Description
+                                                </p>
+                                                <h5 class="card-title">Platform 1</h5>
+                                                <p class="card-text">
+                                                    Description
+                                                </p>
+                                                <h5 class="card-title">Platform 1</h5>
+                                                <p class="card-text">
+                                                    Description
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3 my-3">
+                        <div class="card">
+                            <img src="images/dp.png" alt="" class="card-img-top">
+                            <div class="card-body">
+                                <h4 class="card-title">Candidate 2</h4>
+                                <p class="card-text">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, voluptatem! Vero repellendus eum culpa esse.
+                                </p>
+                                <div class="row">
+                                    <div class="col-12 mb-2">
+                                        <button class="btn btn-outline-light rad w-100 sp-btn" value="SP4">Select</button>
+                                    </div>
+                                    <div class="col-12">
+                                        <button class="btn btn-outline-light rad w-100 mb-2 mb-md-0" type="button" data-bs-toggle="collapse" data-bs-target="#platforms4">
+                                            Platforms
+                                        </button>
+                                    </div>
+                                    <div class="collapse mt-3" id="platforms4">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Platform 1</h5>
+                                                <p class="card-text">
+                                                    Description
+                                                </p>
+                                                <h5 class="card-title">Platform 1</h5>
+                                                <p class="card-text">
+                                                    Description
+                                                </p>
+                                                <h5 class="card-title">Platform 1</h5>
+                                                <p class="card-text">
+                                                    Description
+                                                </p>
+                                                <h5 class="card-title">Platform 1</h5>
+                                                <p class="card-text">
+                                                    Description
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Complete Voting -->
+                <div class="row p-6 mb-3 complete-voting justify-content-center process">
+                    <div class="col-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Summary of Vote</h4>
+                                <h5>Mayor</h5>
+                                <ul>
+                                    <li>Candidate 1</li>
+                                </ul>
+                                <h5>Vice Mayor</h5>
+                                <ul>
+                                    <li>Candidate 2</li>
+                                </ul>
+                                <h5>Sangguniang Panlalawigan Counsilors</h5>
+                                <ul>
+                                    <li>Candidate 1</li>
+                                    <li>Candidate 3</li>
+                                    <li>Candidate 4</li>
+                                </ul>
+                                <button class="btn w-100" id="submit-vote">Submit Vote</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <script src="js/vote.js"></script>
+</body>
+</html>

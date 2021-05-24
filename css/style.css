@@ -1,0 +1,214 @@
+
+ html, body {
+    font-family: 'Montserrat', sans-serif;
+    color: #260383;
+}
+body {
+    background: #eee;
+}
+
+.navbar-brand, .nav-link {
+    color: #5b2d65 !important;
+}
+
+.logo {
+    font-size: 1.5rem;
+}
+
+.content {
+    padding: 0 2rem;
+    height: 85vh;
+}
+
+.nav-container {
+    z-index: 10000;
+}
+
+.scrolled-nav {    
+    background: #260383 !important;
+    transition: all 0.1s linear;
+}
+
+.scrolled-nav-item {
+    color: #fff !important;
+    transition: all 0.1s linear;
+}
+
+.scrolled-login {
+    background: #fff !important;
+    color: #4400ff !important;
+    transition: all 0.1s linear;
+}
+
+.scrolled-login:hover {
+    background: #1f0074 !important;
+    color: #fff !important;
+    border: 3px solid #fff !important;
+    transition: all 0.1s linear;
+}
+
+.btn {
+    background: #260383;
+    color: #fff;
+}
+
+.btn:hover {
+    background: #fff;
+    border: 1px solid #555;
+    color: #260383;
+}
+
+.slideshow {
+    padding: 50px;
+    width: 100%;
+}
+
+.slider{
+    width: 100%;
+    width: 800px
+    height: 500px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.slides{
+    width: 500%;
+    height: 500px;
+    display: flex;
+}
+
+.slides input{
+    display: none;
+}
+
+.slide{
+    width: 20%;
+    transition: 2s;
+}
+
+.slide img{
+    width: 50cm;
+    height: 16.06cm;
+}
+
+.navigation-manual{
+    position: absolute;
+    padding-top: 500px;
+    width: 250px;
+    margin-top: -40px;
+    display: flex;
+    justify-content: center;
+}
+
+.manual-btn{
+    border: 2px solid #40D3DC;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 1s;
+}
+
+.manual-btn:not(:last-child){
+    margin-right: 40px;
+}
+
+.manual-btn:hover{
+    background: black;
+}
+
+#radio1:checked ~ .first{
+    margin-left: 0;
+}
+
+#radio2:checked ~ .first{
+    margin-left: -20%;
+}
+
+#radio3:checked ~ .first{
+    margin-left: -40%;
+}
+
+#radio4:checked ~ .first{
+    margin-left: -60%;
+}
+
+.navigation-auto {
+    position: absolute;
+    display: flex;
+    width: 250px;
+    justify-content: center;
+    margin-top: 460px;
+}
+
+.navigation-auto div{
+    border: 2px solid #40D3DC;
+    padding: 5px;
+    border-radius: 10px;
+    transition: 1s;
+}
+
+.navigation-auto div:not(:last-child){
+    margin-right: 40px;
+}
+
+#radio1:checked ~ .navigation-auto .auto-btn1{
+    background: #40D3DC;
+}
+
+#radio2:checked ~ .navigation-auto .auto-btn2{
+    background: #40D3DC;
+}
+
+#radio3:checked ~ .navigation-auto .auto-btn3{
+    background: #40D3DC;
+}
+
+#radio4:checked ~ .navigation-auto .auto-btn4{
+    background: #40D3DC;
+}
+
+.iboto-info {
+    margin: 75px 0px 75px 75px;
+    font-size: 24px;
+    text-align: justify;
+}
+
+.container-vote {
+    background-color: #260383;
+    padding: 50px;
+}
+
+.container-ibotoinfo{
+    border: 0;
+    padding: 0; 
+}
+
+.card-text{
+    text-align: justify;
+}
+
+.container-aboutUs {
+    padding: 50px;
+    text-align: center;
+}
+
+.pic {
+    padding:  20px;
+}
+
+.tryTitle{
+    font-style: italic;
+    font-weight: bold;
+    font-size: 40px;
+} 
+
+.tryInfo {
+    text-align: justify;
+    border: 100px;
+    padding: 20px;
+    font-size: 24px;
+}
+
+.symbol {
+    text-align: center;
+}
